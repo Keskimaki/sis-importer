@@ -2,6 +2,9 @@ name: 'Build and push image'
 description: 'Builds and pushes image to Quay.io'
 
 inputs:
+  path:
+    required: true
+    description: 'Path to service folder'
   tag:
     required: true
     description: 'Image tag'
@@ -12,13 +15,11 @@ inputs:
 runs:
   using: composite
   steps:
-    - uses: actions/checkout@v3
-
     - name: Build image
       id: build-image
       uses: redhat-actions/buildah-build@v2
       with:
-        image: importer-api
+        image: ${{ inputs.path }}
         tags: ${{ inputs.tag }} ${{ github.sha }}
         path: importer-api
         containerfiles: |
