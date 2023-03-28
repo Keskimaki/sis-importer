@@ -8,7 +8,6 @@ on:
       - importer-api/**
       - .github/workflows/importer-api-production.yaml
 
-
 jobs:
   test:
     runs-on: ubuntu-latest
