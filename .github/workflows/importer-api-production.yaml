@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/run-tests
+      - uses: ./.github/actions/build-and-push-image
         with:
           path: importer-api
           tag: production
