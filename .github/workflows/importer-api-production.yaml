@@ -14,9 +14,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/run-tests
-        with:
-          path: importer-api
+      - name: Run tests
+        uses: ./.github/actions/run-tests
+          with:
+            path: importer-api
 
   build-and-push:
     runs-on: ubuntu-latest
@@ -24,8 +25,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/build-and-push-image
-        with:
-          path: importer-api
-          tag: production
-          password: ${{ secrets.QUAY_IO_TOKEN }}
+      - name: Build and push image
+        uses: ./.github/actions/build-and-push-image
+          with:
+            path: importer-api
+            tag: production
+            password: ${{ secrets.QUAY_IO_TOKEN }}
