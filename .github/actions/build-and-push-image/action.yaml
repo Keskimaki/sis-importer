@@ -23,7 +23,7 @@ runs:
         tags: ${{ inputs.tag }} ${{ github.sha }}
         context: ${{ inputs.image }}
         containerfiles: |
-          Dockerfile
+          ${{ inputs.image }}/Dockerfile
 
     - name: Push to quay.io
       uses: redhat-actions/push-to-registry@v2
