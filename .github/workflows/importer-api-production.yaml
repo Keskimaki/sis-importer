@@ -31,3 +31,4 @@ jobs:
           image: importer-api
           tag: production
           password: ${{ secrets.QUAY_IO_TOKEN }}
+
