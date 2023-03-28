@@ -2,9 +2,9 @@ name: 'Build and push image'
 description: 'Builds and pushes image to Quay.io'
 
 inputs:
-  path:
+  image:
     required: true
-    description: 'Path to service folder'
+    description: 'Image name'
   tag:
     required: true
     description: 'Image tag'
@@ -19,9 +19,9 @@ runs:
       id: build-image
       uses: redhat-actions/buildah-build@v2
       with:
-        image: ${{ inputs.path }}
+        image: ${{ inputs.image }}
         tags: ${{ inputs.tag }} ${{ github.sha }}
-        path: importer-api
+        context: ${{ inputs.image }}
         containerfiles: |
           Dockerfile
 
